@@ -5,31 +5,17 @@
     <title>Python</title>
 </head>
 <body>
-<!--    <h1>Hello {{ name }}</h1>-->
-<!--    <h2>Suck my {{ adress }}</h2>-->
-<!--    <h3>Sucker poper motherfucker</h3>-->
-<!--    {% for name in arr %}-->
-<!--        {% if name.0 == 'O' %}-->
-<!--            <h1>hello master {{ name }}</h1>-->
-<!--        {% elif name.0 == 'I' %}-->
-<!--            <h6>Hi, look at me now</h6>-->
-<!--        {% else %}-->
-<!--            <h3>hello {{ name }}</h3>-->
-<!--        {% endif %}-->
-<!--    {% endfor %}-->
 {{ user }}
     {% for b in  books %}
-        <h3>{{ b.title }}</h3>
-        <h3>{{ b.date }}</h3>
-        <h5>{{ b.text }}</h5>
-        {{ b.authors.all }}
-        <h3>{{ b.comments.count }}</h3>
-        <h3>{{ b.comments.exists }}</h3>
+        <h1>{{ b.title }}</h1>
+        <h2>{{ b.date }}</h2>
+        <h3>{{ b.text }}</h3>
+        <h3>{{ b.authors.all }}</h3>
+        <a href='{% url 'add-like' id=b.id %}'><h3>Likes: {{ b.likes1.count }}</h3></a>
         {% for comment in b.comments.all %}
             <h4>{{ comment.text }}</h4>
             <h5>{{ comment.date }}</h5>
-            <h6>{{ comment.author }}</h6>
-            <h6>{{ comment.book.id }}</h6>
+            <h5>{{ comment.author }}</h5>
         {% endfor %}
         <br>
     {% endfor %}
